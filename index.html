@@ -15,7 +15,6 @@
 *{margin:0;padding:0;box-sizing:border-box;font-family:Inter,system-ui,sans-serif}
 body{background:#fff;color:#111;line-height:1.7}
 header{border-bottom:1px solid #e5e7eb;background:#fff}
-.nav-wrap{position:sticky;top:0;background:#fff;z-index:20}
 .nav{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;gap:16px}
 .logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:#111;font-weight:600}
 .dot{width:9px;height:9px;border-radius:50%;background:#dc2626}
@@ -23,10 +22,10 @@ header{border-bottom:1px solid #e5e7eb;background:#fff}
 .links{display:flex;gap:18px;flex-wrap:wrap}
 .links a{text-decoration:none;color:#4b5563;font-size:14px}
 .links a:hover{color:#111}
-.mobile-menu{display:none;border-top:1px solid #f3f4f6;background:#fff}
-.mobile-menu.active{display:block}
-.mobile-menu-inner{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;padding:6px 20px}
-.mobile-menu-inner a{text-decoration:none;color:#4b5563;font-size:14px;padding:10px 0}
+.mobile-menu{position:absolute;left:0;right:0;top:100%;background:#fff;border-bottom:1px solid #e5e7eb;box-shadow:0 10px 30px -20px rgba(15,23,42,.9);transform:translateY(-10px);opacity:0;pointer-events:none;transition:all .25s ease}
+.mobile-menu.active{transform:translateY(0);opacity:1;pointer-events:auto}
+.mobile-menu-inner{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;padding:8px 20px}
+.mobile-menu-inner a{text-decoration:none;color:#4b5563;font-size:14px;padding:12px 0}
 .mobile-menu-inner a:hover{color:#111}
 @media(max-width:720px){.links{display:none}.menu-btn{display:block}}
 main{max-width:1100px;margin:0 auto;padding:40px 20px 60px;display:grid;gap:28px}
@@ -61,20 +60,18 @@ footer{border-top:1px solid #e5e7eb}
 </style>
 </head>
 <body>
-<header>
-  <div class="nav-wrap">
-    <nav class="nav">
-      <a class="logo" href="index.html"><span class="dot"></span>Tesla Import Cost Calculator</a>
-      <button class="menu-btn" id="menuBtn" aria-label="Menu">☰</button>
-      <div class="links">
-        <a href="index.html">Home</a>
-        <a href="blog/">Blog</a>
-        <a href="about.html">About Us</a>
-        <a href="privacy.html">Privacy Policy</a>
-        <a href="contact.html">Contact Us</a>
-      </div>
-    </nav>
-  </div>
+<header style="position:relative">
+  <nav class="nav">
+    <a class="logo" href="index.html"><span class="dot"></span>Tesla Import Cost Calculator</a>
+    <button class="menu-btn" id="menuBtn" aria-label="Menu">☰</button>
+    <div class="links">
+      <a href="index.html">Home</a>
+      <a href="blog/">Blog</a>
+      <a href="about.html">About Us</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="contact.html">Contact Us</a>
+    </div>
+  </nav>
   <div class="mobile-menu" id="mobileMenu">
     <div class="mobile-menu-inner">
       <a href="index.html">Home</a>
@@ -88,7 +85,8 @@ footer{border-top:1px solid #e5e7eb}
 <script>
 const btn=document.getElementById('menuBtn'),m=document.getElementById('mobileMenu');
 btn.addEventListener('click',e=>{e.stopPropagation();m.classList.toggle('active');});
-document.addEventListener('click',e=>{if(!m.contains(e.target)&&!btn.contains(e.target)){m.classList.remove('active');}});
+document.addEventListener('click',e=>{if(!btn.contains(e.target)&&!m.contains(e.target)){m.classList.remove('active');}});
+window.addEventListener('resize',()=>{if(window.innerWidth>720)m.classList.remove('active');});
 </script>
 <main>
   <section class="hero">
