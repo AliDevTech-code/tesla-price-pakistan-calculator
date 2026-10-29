@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tesla Price in Pakistan 2026 - Import Cost Calculator</title>
-<meta name="description" content="Calculate Tesla import cost in Pakistan for Model 3, Model Y, Model S, Model X. Get estimated customs duty, total cost in PKR and compare EV charging vs petrol.">
+<meta name="description" content="Calculate Tesla import cost in Pakistan for Model 3, Model Y, Model S, Model X. Get estimated customs duty, total cost in PKR.">
 <meta name="keywords" content="Tesla price in Pakistan, Tesla import cost Pakistan, Tesla Model 3 Pakistan, Tesla Model Y Pakistan, Tesla import duty Pakistan">
 <meta name="robots" content="index, follow">
 <meta name="google-site-verification" content="FWrX2vy-J4xjHthjgB5HoOyfY0BDs-50eKfYe9muQok">
@@ -25,7 +25,6 @@ main{max-width:1100px;margin:0 auto;padding:40px 20px 60px;display:grid;gap:28px
 .hero{text-align:center;display:grid;gap:10px}
 .hero h1{font-size:clamp(28px,6vw,48px);font-weight:600;letter-spacing:-.02em}
 .hero p{color:#4b5563;max-width:820px;margin:0 auto}
-.ad{border:1px dashed #d1d5db;border-radius:12px;min-height:90px;display:flex;align-items:center;justify-content:center;color:#6b7280;background:#f9fafb;font-size:13px}
 .card{border:1px solid #e5e7eb;border-radius:16px;overflow:hidden}
 .ch{padding:26px 28px 0}
 .ch h2{font-size:clamp(22px,4vw,30px);font-weight:600}
@@ -45,6 +44,7 @@ input,select{border:1px solid #e5e7eb;border-radius:10px;padding:10px 12px;font-
 .v{font-weight:500}
 .vt{font-size:20px;font-weight:600}
 .note{color:#6b7280;font-size:14px}
+.native-wrap{margin-top:20px}
 footer{border-top:1px solid #e5e7eb}
 .fi{max-width:1100px;margin:0 auto;padding:26px 20px;text-align:center;display:grid;gap:10px}
 .fl{display:flex;justify-content:center;gap:18px;flex-wrap:wrap}
@@ -67,9 +67,8 @@ footer{border-top:1px solid #e5e7eb}
 <main>
   <section class="hero">
     <h1>Tesla Price in Pakistan 2026 - Import Cost Calculator</h1>
-    <p>Calculate the estimated import cost of Tesla Model 3, Model Y, Model S and Model X in Pakistan. Enter car price in USD, shipping cost and exchange rate to get estimated customs duty, total cost in PKR.</p>
+    <p>Calculate the estimated import cost of Tesla Model 3, Model Y, Model S and Model X in Pakistan.</p>
   </section>
-  <div id="adsterra-1" class="ad">Ad Slot 1 - Below Header</div>
   <section class="card">
     <div class="ch">
       <h2>Import Cost Calculator</h2>
@@ -96,10 +95,13 @@ footer{border-top:1px solid #e5e7eb}
           <div class="row"><span class="l">Petrol Equivalent</span><span class="v">PKR 15,000</span></div>
           <p class="note">For comparison only.</p>
         </div>
+        <div class="native-wrap">
+          <script async="async" data-cfasync="false" src="https://bauval.org/21/864a2ef12aa1b787226f3b7436d1cfa1"></script>
+          <div id="container-864a2ef12aa1b787226f3b7436d1cfa1"></div>
+        </div>
       </div>
     </div>
   </section>
-  <div id="adsterra-2" class="ad">Ad Slot 2 - After Calculator</div>
 </main>
 <footer>
   <div class="fi">
@@ -112,7 +114,6 @@ footer{border-top:1px solid #e5e7eb}
     <p class="fc">© 2026 Tesla Import Cost Calculator for Pakistan. All rights reserved.</p>
   </div>
 </footer>
-<div id="adsterra-3" class="ad" style="max-width:1100px;margin:0 auto 30px">Ad Slot 3 - Before Footer</div>
 <script>
 const p=document.getElementById('p'),s=document.getElementById('s'),r=document.getElementById('r'),u=document.getElementById('usd'),d=document.getElementById('duty'),t=document.getElementById('total');
 function calc(){const pv=+p.value||0,sv=+s.value||0,rv=+r.value||0;const us=pv+sv;u.textContent='$'+us.toLocaleString();if(rv<=0){d.textContent='PKR 0';t.textContent='PKR 0';return;}const du=us*rv*0.25,tt=us*rv+du;d.textContent='PKR '+Math.round(du).toLocaleString();t.textContent='PKR '+Math.round(tt).toLocaleString();}
