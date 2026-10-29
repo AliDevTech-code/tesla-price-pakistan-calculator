@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://tesla-price-in-pakistan-calculator.vercel.app/sitemap.xml
