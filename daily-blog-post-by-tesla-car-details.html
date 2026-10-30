@@ -166,3 +166,41 @@ pubBtn.addEventListener('click',()=>{
 </script>
 </body>
 </html>
+
+<section class="card">
+  <div class="card-header">
+    <div>
+      <h2 style="font-size:18px;font-weight:600">Delete Blog Post</h2>
+      <p class="note">Remove post from /blog - enter slug of the file to delete</p>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="grid">
+      <div class="field">
+        <label for="delSlug">Slug (e.g. tesla-model-y-2026-price-pakistan-duty)</label>
+        <input id="delSlug" placeholder="enter-slug-without-.html">
+      </div>
+    </div>
+    <div class="actions">
+      <button class="secondary" id="genDel">Generate Delete Instructions</button>
+    </div>
+    <div class="field" id="delOut" style="display:none">
+      <label>Steps</label>
+      <pre id="delCode"></pre>
+    </div>
+  </div>
+</section>
+
+<script>
+const delSlug=document.getElementById('delSlug');
+const genDel=document.getElementById('genDel');
+const delOut=document.getElementById('delOut');
+const delCode=document.getElementById('delCode');
+genDel.addEventListener('click',()=>{
+  const s=(delSlug.value||'').trim().replace(/\.html$/,'');
+  if(!s){alert('Enter slug');return;}
+  delCode.textContent='1) Delete file: blog/'+s+'.html\n2) Edit blog/index.html and remove the card linking to '+s+'.html\n3) git add blog/ && git commit -m "Remove blog post '+s+'" && git push';
+  delOut.style.display='grid';
+  delOut.scrollIntoView({behavior:'smooth',block:'nearest'});
+});
+</script>
