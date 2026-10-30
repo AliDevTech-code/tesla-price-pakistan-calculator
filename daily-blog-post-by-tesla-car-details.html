@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily Blog Post Creator - Tesla Car Details</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,system-ui,sans-serif}
+body{background:#0f0f0f;color:#f5f5f5;line-height:1.7}
+header{border-bottom:1px solid #272727;padding:16px 24px}
+header h1{font-size:18px;font-weight:600}
+main{max-width:980px;margin:0 auto;padding:32px 24px;display:grid;gap:24px}
+.card{background:#151515;border:1px solid #272727;border-radius:16px;overflow:hidden}
+.card-header{padding:20px 28px;border-bottom:1px solid #272727;display:flex;justify-content:space-between;align-items:center}
+.card-body{padding:24px 28px;display:grid;gap:18px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.field{display:grid;gap:8px}
+label{font-size:14px;color:#b3b3b3}
+input,textarea{background:#0f0f0f;border:1px solid #333;border-radius:12px;padding:10px 14px;color:#f5f5f5;font-size:14px}
+textarea{min-height:120px;resize:vertical}
+textarea#content{min-height:420px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+button{background:#2563eb;color:#fff;border:none;border-radius:999px;padding:10px 26px;font-weight:500;cursor:pointer}
+button.secondary{background:transparent;border:1px solid #333;color:#f5f5f5}
+.actions{display:flex;flex-wrap:wrap;gap:12px;justify-content:flex-end}
+pre{background:#0f0f0f;border:1px solid #333;border-radius:12px;padding:18px;overflow:auto;color:#9ae6b4;font-size:13px;white-space:pre-wrap}
+.note{color:#8e8e8e;font-size:13px}
+</style>
+</head>
+<body>
+<header>
+  <h1>Daily Blog Post Creator • Tesla Car Details</h1>
+</header>
+<main>
+  <section class="card">
+    <div class="card-header">
+      <div>
+        <h2 style="font-size:18px;font-weight:600">Post Details</h2>
+        <p class="note">Date is auto-filled. Fill image URL, title, SEO, keywords and full blog content.</p>
+      </div>
+      <button class="secondary" id="resetBtn">Reset</button>
+    </div>
+    <div class="card-body">
+      <div class="grid">
+        <div class="field">
+          <label for="date">Date (Auto)</label>
+          <input id="date" readonly>
+        </div>
+        <div class="field">
+          <label for="image">Image URL</label>
+          <input id="image" placeholder="https://i.ibb.co/.../image.jpg">
+        </div>
+        <div class="field">
+          <label for="title">Title</label>
+          <input id="title" placeholder="Enter blog title">
+        </div>
+        <div class="field">
+          <label for="slug">Slug (auto from title)</label>
+          <input id="slug" placeholder="auto-generated-slug">
+        </div>
+      </div>
+      <div class="grid">
+        <div class="field">
+          <label for="seo">SEO Description</label>
+          <textarea id="seo" placeholder="Meta description for search engines"></textarea>
+        </div>
+        <div class="field">
+          <label for="keywords">Keywords (comma separated)</label>
+          <textarea id="keywords" placeholder="tesla model y pakistan, tesla price pakistan, ..."></textarea>
+        </div>
+      </div>
+      <div class="field">
+        <label for="content">Blog Content (HTML or plain text)</label>
+        <textarea id="content" placeholder="<h2>...</h2><p>...</p> or full article text"></textarea>
+      </div>
+      <div class="actions">
+        <button id="previewBtn">Preview Card</button>
+        <button id="publishBtn">Publish to /blog</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="card" id="previewCard" style="display:none">
+    <div class="card-header">
+      <h2 style="font-size:18px;font-weight:600">Blog Card Preview</h2>
+      <p class="note">This is how it will appear on /blog page</p>
+    </div>
+    <div class="card-body">
+      <div style="border:1px solid #333;border-radius:16px;overflow:hidden;max-width:420px">
+        <div style="overflow:hidden">
+          <img id="prevImg" src="" alt="" style="width:100%;height:220px;object-fit:cover">
+        </div>
+        <div style="padding:18px 20px;display:grid;gap:10px">
+          <span id="prevMeta" style="font-size:12px;color:#8e8e8e;text-transform:uppercase;letter-spacing:.08em"></span>
+          <h3 id="prevTitle" style="font-size:18px;font-weight:600"></h3>
+          <p id="prevDesc" style="color:#b3b3b3;font-size:14px"></p>
+          <span style="color:#3b82f6;font-weight:500">Read More →</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card" id="codeCard" style="display:none">
+    <div class="card-header">
+      <h2 style="font-size:18px;font-weight:600">Generated Files</h2>
+      <p class="note">Copy both files and upload/push to update /blog</p>
+    </div>
+    <div class="card-body">
+      <div class="field">
+        <label>blog/&lt;slug&gt;.html</label>
+        <pre id="postCode"></pre>
+      </div>
+      <div class="field">
+        <label>blog/index.html (updated card)</label>
+        <pre id="indexCode"></pre>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+const dateEl=document.getElementById('date');
+const imgEl=document.getElementById('image');
+const titleEl=document.getElementById('title');
+const slugEl=document.getElementById('slug');
+const seoEl=document.getElementById('seo');
+const keysEl=document.getElementById('keywords');
+const contentEl=document.getElementById('content');
+const prevBtn=document.getElementById('previewBtn');
+const pubBtn=document.getElementById('publishBtn');
+const resetBtn=document.getElementById('resetBtn');
+const prevCard=document.getElementById('previewCard');
+const codeCard=document.getElementById('codeCard');
+const prevImg=document.getElementById('prevImg');
+const prevMeta=document.getElementById('prevMeta');
+const prevTitle=document.getElementById('prevTitle');
+const prevDesc=document.getElementById('prevDesc');
+const postCode=document.getElementById('postCode');
+const indexCode=document.getElementById('indexCode');
+
+function today(){const d=new Date();return d.toLocaleDateString('en-US',{month:'short',year:'numeric'});}
+dateEl.value=today();
+titleEl.addEventListener('input',()=>{
+  const s=titleEl.value.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
+  slugEl.value=s||'';
+});
+resetBtn.addEventListener('click',()=>{location.reload();});
+
+prevBtn.addEventListener('click',()=>{
+  if(!titleEl.value||!imgEl.value){alert('Add image URL and title');return;}
+  prevImg.src=imgEl.value;prevImg.alt=titleEl.value;
+  prevMeta.textContent='Updated: '+dateEl.value+' • 6 min read';
+  prevTitle.textContent=titleEl.value;
+  prevDesc.textContent=seoEl.value||'Tesla car details and import updates.';
+  prevCard.style.display='block';
+  prevCard.scrollIntoView({behavior:'smooth',block:'nearest'});
+});
+
+pubBtn.addEventListener('click',()=>{
+  if(!titleEl.value||!imgEl.value||!slugEl.value){alert('Title, image URL and slug required');return;}
+  const slug=slugEl.value;
+  const fullDate=new Date().toISOString().split('T')[0];
+  const post=`<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>${titleEl.value.replace(/</g,'&lt;')} | Tesla Import Cost Calculator</title>
+<meta name="description" content="${(seoEl.value||titleEl.value).replace(/"/g,'&quot;')}">
+<meta name="keywords" content="${(keysEl.value||'Tesla Pakistan, Tesla import cost').replace(/"/g,'&quot;')}">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://tesla-price-in-pakistan-calculator.vercel.app/blog/${slug}.html">
+<meta property="og:title" content="${titleEl.value.replace(/"/g,'&quot;')}">
+<meta property="og:description" content="${(seoEl.value||titleEl.value).replace(/"/g,'&quot;')}">
+<meta property="og:type" content="article">
+<meta property="og:image" content="${imgEl.value}">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,sans-serif}
+body{background:#fff;color:#111;line-height:1.9}
+header{border-bottom:1px solid #e5e7eb;position:sticky;top:0;background:#fff;z-index:10}
+.nav{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;gap:16px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:#111;font-weight:600}
+.dot{width:9px;height:9px;border-radius:50%;background:#dc2626}
+.links{display:flex;gap:18px;flex-wrap:wrap}
+.links a{text-decoration:none;color:#4b5563;font-size:14px}
+.links a:hover{color:#111}
+main{max-width:860px;margin:0 auto;padding:40px 20px 70px;display:grid;gap:26px}
+h1{font-size:clamp(28px,5vw,46px);font-weight:600;letter-spacing:-.02em;line-height:1.12}
+.meta{color:#6b7280;font-size:14px}
+.hero-img{width:100%;border-radius:16px;height:auto;aspect-ratio:16/9;object-fit:cover}
+article{display:grid;gap:18px}
+p{color:#1f2937;font-size:16px}
+h2{font-size:clamp(22px,4vw,30px);font-weight:600;margin-top:10px}
+h3{font-size:19px;font-weight:600}
+ul{display:grid;gap:10px;padding-left:22px}
+footer{border-top:1px solid #e5e7eb}
+.fi{max-width:1100px;margin:0 auto;padding:26px 20px;text-align:center;display:grid;gap:10px}
+.fl{display:flex;justify-content:center;gap:18px;flex-wrap:wrap}
+.fl a{color:#4b5563;text-decoration:none;font-size:14px}
+.fc{color:#6b7280;font-size:14px}
+</style>
+</head>
+<body>
+<header>
+  <nav class="nav">
+    <a class="logo" href="/index.html"><span class="dot"></span>Tesla Import Cost Calculator</a>
+    <div class="links">
+      <a href="/index.html">Home</a>
+      <a href="/blog/">Blog</a>
+      <a href="/about.html">About Us</a>
+      <a href="/privacy.html">Privacy Policy</a>
+      <a href="/contact.html">Contact Us</a>
+    </div>
+  </nav>
+</header>
+<main>
+  <section>
+    <h1>${titleEl.value.replace(/</g,'&lt;')}</h1>
+    <p class="meta">Updated ${dateEl.value}</p>
+  </section>
+  <img class="hero-img" src="${imgEl.value}" alt="${titleEl.value.replace(/"/g,'&quot;')}" loading="lazy">
+  <article>
+    ${contentEl.value}
+  </article>
+</main>
+<footer>
+  <div class="fi">
+    <div class="fl">
+      <a href="/index.html">Home</a>
+      <a href="/blog/">Blog</a>
+      <a href="/about.html">About Us</a>
+      <a href="/privacy.html">Privacy Policy</a>
+      <a href="/contact.html">Contact Us</a>
+    </div>
+    <p class="fc">© 2026 Tesla Import Cost Calculator for Pakistan. All rights reserved.</p>
+  </div>
+</footer>
+<script data-cfasync="false" src="https://bauval.org/14/73dfe65f9c2996910f88ddde014a0a1a"></script>
+</body>
+</html>`;
+  const card=`    <a class="card" href="${slug}.html">
+      <div class="card-img-wrap">
+        <img src="${imgEl.value}" alt="${titleEl.value.replace(/"/g,'&quot;')}" loading="lazy">
+      </div>
+      <div class="card-body">
+        <span class="meta-top">Updated: ${dateEl.value} • 6 min read</span>
+        <h2>${titleEl.value.replace(/</g,'&lt;')}</h2>
+        <p>${(seoEl.value||'Tesla car details and updates.').replace(/</g,'&lt;')}</p>
+        <span class="readmore">Read More →</span>
+      </div>
+    </a>
+`;
+  postCode.textContent=post;
+  indexCode.textContent=card;
+  codeCard.style.display='block';
+  codeCard.scrollIntoView({behavior:'smooth',block:'nearest'});
+});
+</script>
+</body>
+</html>
