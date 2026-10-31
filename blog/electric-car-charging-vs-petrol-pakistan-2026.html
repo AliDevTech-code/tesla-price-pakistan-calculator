@@ -21,9 +21,15 @@ header{border-bottom:1px solid #e5e7eb;position:sticky;top:0;background:#fff;z-i
 .nav{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;gap:16px}
 .logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:#111;font-weight:600}
 .dot{width:9px;height:9px;border-radius:50%;background:#dc2626}
+.menu-btn{display:none;background:none;border:1px solid #e5e7eb;border-radius:8px;padding:8px 10px;cursor:pointer}
 .links{display:flex;gap:18px;flex-wrap:wrap}
 .links a{text-decoration:none;color:#4b5563;font-size:14px}
 .links a:hover{color:#111}
+.mobile-menu{position:absolute;left:0;right:0;top:100%;background:#fff;border-bottom:1px solid #e5e7eb;box-shadow:0 10px 30px -20px rgba(15,23,42,.9);transform:translateY(-10px);opacity:0;pointer-events:none;transition:all .25s ease}
+.mobile-menu.active{transform:translateY(0);opacity:1;pointer-events:auto}
+.mobile-menu-inner{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;padding:8px 20px}
+.mobile-menu-inner a{text-decoration:none;color:#4b5563;font-size:14px;padding:12px 0}
+@media(max-width:720px){.links{display:none}.menu-btn{display:block}}
 main{max-width:860px;margin:0 auto;padding:40px 20px 70px;display:grid;gap:26px}
 h1{font-size:clamp(28px,5vw,46px);font-weight:600;letter-spacing:-.02em;line-height:1.12}
 .meta{color:#6b7280;font-size:14px}
@@ -60,6 +66,7 @@ a.inline{color:#dc2626;text-decoration:none}
 <header>
   <nav class="nav">
     <a class="logo" href="../index.html"><span class="dot"></span>Tesla Import Cost Calculator</a>
+    <button class="menu-btn" id="menuBtn" aria-label="Menu">☰</button>
     <div class="links">
       <a href="../index.html">Home</a>
       <a href="./">Blog</a>
@@ -68,7 +75,17 @@ a.inline{color:#dc2626;text-decoration:none}
       <a href="../contact.html">Contact Us</a>
     </div>
   </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-inner">
+      <a href="../index.html">Home</a>
+      <a href="./">Blog</a>
+      <a href="../about.html">About Us</a>
+      <a href="../privacy.html">Privacy Policy</a>
+      <a href="../contact.html">Contact Us</a>
+    </div>
+  </div>
 </header>
+<script>const btn=document.getElementById('menuBtn'),m=document.getElementById('mobileMenu');if(btn&&m){btn.addEventListener('click',e=>{e.stopPropagation();m.classList.toggle('active');});document.addEventListener('click',e=>{if(!btn.contains(e.target)&&!m.contains(e.target)){m.classList.remove('active');}});}</script>
 <main>
   <section>
     <h1>Electric Car Charging Cost vs Petrol in Pakistan - Real 2026 Comparison</h1>
@@ -80,9 +97,6 @@ a.inline{color:#dc2626;text-decoration:none}
   <article>
     <p>With petrol prices staying high across Pakistan in 2026, more drivers are looking at electric vehicles to cut down their monthly fuel bills. The biggest factor driving this change is the huge gap in running costs. When it comes to the <strong>Electric car charging cost vs petrol Pakistan</strong> debate, electric vehicles come out much cheaper for daily use. </p>
     <p>This money saving guide looks at real figures for Pakistan. It covers home charging, public charging, cost per 100km, yearly savings and practical ways to spend even less. By the end, you will know exactly why <strong>Electric car charging cost vs petrol Pakistan</strong> heavily favors EVs in 2026.</p>
-
-    <h2>Why The Shift To EVs In Pakistan</h2>
-    <p>For most households in Pakistan, petrol is one of the largest monthly expenses. With fuel prices changing often, budget conscious drivers are searching for stable alternatives. This is exactly why the comparison of <strong>Electric car charging cost vs petrol Pakistan</strong> is more relevant now than ever before. Leading EV brands like those found on <a class="inline" href="https://www.tesla.com/" target="_blank" rel="noopener dofollow">tesla.com</a> are proving that electric driving can be both practical and affordable.</p>
     <div style="text-align:center;margin:24px 0">
       <script type="text/javascript">
 	atOptions = {
@@ -96,6 +110,8 @@ a.inline{color:#dc2626;text-decoration:none}
       <script type="text/javascript" src="https://www.topcreativeformat.com/aab3d9f0ad3a8e4b03f7f3e0a7f0a7c3a/invoke.js"></script>
     </div>
 
+    <h2>Why The Shift To EVs In Pakistan</h2>
+    <p>For most households in Pakistan, petrol is one of the largest monthly expenses. With fuel prices changing often, budget conscious drivers are searching for stable alternatives. This is exactly why the comparison of <strong>Electric car charging cost vs petrol Pakistan</strong> is more relevant now than ever before. Leading EV brands like those found on <a class="inline" href="https://www.tesla.com/" target="_blank" rel="noopener dofollow">tesla.com</a> are proving that electric driving can be both practical and affordable.</p>
 
     <h2>Real Cost Comparison: Petrol Rs 2440/100KM vs Electric Rs 960/100KM</h2>
     <p>Below is a realistic comparison based on average rates seen across Pakistan in 2026. These numbers are ideal for city commutes and mixed driving.</p>
