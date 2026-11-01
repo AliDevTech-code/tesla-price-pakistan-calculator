@@ -1,14 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-US">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tesla Price in Pakistan 2026 - Import Cost Calculator</title>
-<meta name="description" content="Calculate Tesla import cost in Pakistan for Model 3, Model Y, Model S, Model X. Get estimated customs duty, total cost in PKR.">
-<meta name="keywords" content="Tesla price in Pakistan, Tesla import cost Pakistan, Tesla Model 3 Pakistan, Tesla Model Y Pakistan, Tesla import duty Pakistan">
+<title>Tesla Price Calculator US 2026 - Monthly Payment & Tax Credit</title>
+<meta name="description" content="Free Tesla price calculator for the USA. Estimate out-the-door price, $7,500 federal EV tax credit, state incentives and monthly payment for Model 3, Model Y, Model S and Model X in 2026.">
+<meta name="keywords" content="Tesla price calculator US, Tesla cost calculator USA, Tesla monthly payment calculator, Tesla Model 3 price USA, Tesla Model Y price USA, federal EV tax credit 2026">
 <meta name="robots" content="index, follow">
 <meta name="google-site-verification" content="FWrX2vy-J4xjHthjgB5HoOyfY0BDs-50eKfYe9muQok">
-<link rel="canonical" href="https://tesla-price-in-pakistan-calculator.vercel.app/">
+<link rel="canonical" href="https://tesla-price-calculator-us.vercel.app/">
+<meta property="og:title" content="Tesla Price Calculator US 2026 - Monthly Payment & Tax Credit">
+<meta property="og:description" content="Estimate your Tesla out-the-door price, federal EV tax credit and monthly payment in the USA.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tesla-price-calculator-us.vercel.app/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -32,37 +36,69 @@ main{max-width:1100px;margin:0 auto;padding:40px 20px 60px;display:grid;gap:28px
 .hero{text-align:center;display:grid;gap:10px}
 .hero h1{font-size:clamp(28px,6vw,48px);font-weight:600;letter-spacing:-.02em}
 .hero p{color:#4b5563;max-width:820px;margin:0 auto}
+.badge{display:inline-flex;align-items:center;gap:8px;border:1px solid #e5e7eb;border-radius:999px;padding:6px 14px;font-size:13px;color:#4b5563;background:#fafafa;justify-self:center}
 .card{border:1px solid #e5e7eb;border-radius:16px;overflow:hidden}
 .ch{padding:26px 28px 0}
 .ch h2{font-size:clamp(22px,4vw,30px);font-weight:600}
 .ch p{color:#4b5563;margin-top:4px}
 .cb{display:grid;grid-template-columns:repeat(12,1fr);gap:24px;padding:24px 28px 28px}
 .cf{grid-column:1/7;display:grid;gap:14px}
-.cr{grid-column:7/-1;display:grid;gap:14px}
+.cr{grid-column:7/-1;display:grid;gap:14px;align-content:start}
 @media(max-width:920px){.cf,.cr{grid-column:1/-1}}
 .field{display:grid;gap:6px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:520px){.grid2{grid-template-columns:1fr}}
 label{font-size:14px;font-weight:500}
-input,select{border:1px solid #e5e7eb;border-radius:10px;padding:10px 12px;font-size:15px}
+input,select{border:1px solid #e5e7eb;border-radius:10px;padding:10px 12px;font-size:15px;width:100%;background:#fff}
+.check{display:flex;align-items:center;gap:10px;border:1px solid #e5e7eb;border-radius:10px;padding:10px 12px;font-size:14px;color:#374151}
+.check input{width:auto}
 .box{border:1px solid #e5e7eb;border-radius:12px;padding:18px;background:linear-gradient(180deg,#fafafa 0%,#fff 100%)}
-.box h3{font-size:17px;font-weight:600}
-.row{display:flex;justify-content:space-between;padding:10px 0;border-top:1px solid #e5e7eb}
+.box h3{font-size:17px;font-weight:600;margin-bottom:4px}
+.row{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-top:1px solid #e5e7eb}
 .row:first-of-type{border-top:none}
 .l{color:#4b5563}
-.v{font-weight:500}
-.vt{font-size:20px;font-weight:600}
-.note{color:#6b7280;font-size:14px}
-.native-wrap{margin-top:20px}
+.v{font-weight:500;text-align:right}
+.vt{font-size:20px;font-weight:600;text-align:right}
+.green{color:#15803d}
+.note{color:#6b7280;font-size:13px}
+.native-wrap{margin-top:6px}
+.content{display:grid;gap:22px}
+.content h2{font-size:clamp(22px,4vw,30px);font-weight:600;margin-top:8px}
+.content h3{font-size:19px;font-weight:600;margin-top:6px}
+.content p{color:#1f2937}
+.content ul{display:grid;gap:10px;padding-left:22px;color:#1f2937}
+.table-wrap{overflow-x:auto;border:1px solid #e5e7eb;border-radius:14px}
+table{width:100%;border-collapse:collapse;min-width:620px}
+th,td{padding:14px 18px;text-align:left;border-bottom:1px solid #e5e7eb}
+th{background:#fafafa;font-weight:500}
+tr:last-child td{border-bottom:none}
+.faq{border:1px solid #e5e7eb;border-radius:14px;overflow:hidden}
+.faq-item{padding:18px 22px;border-top:1px solid #e5e7eb;display:grid;gap:6px}
+.faq-item:first-of-type{border-top:none}
+.faq-q{font-weight:600}
+.faq-a{color:#4b5563}
 footer{border-top:1px solid #e5e7eb}
 .fi{max-width:1100px;margin:0 auto;padding:26px 20px;text-align:center;display:grid;gap:10px}
 .fl{display:flex;justify-content:center;gap:18px;flex-wrap:wrap}
 .fl a{color:#4b5563;text-decoration:none;font-size:14px}
 .fc{color:#6b7280;font-size:14px}
 </style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Tesla Price Calculator US","url":"https://tesla-price-calculator-us.vercel.app/","applicationCategory":"FinanceApplication","operatingSystem":"Any","description":"Estimate Tesla out-the-door price, federal EV tax credit, state incentives and monthly payment in the USA.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"How much does a Tesla cost in the USA in 2026?","acceptedAnswer":{"@type":"Answer","text":"In 2026, the Tesla Model 3 starts around $42,490, the Model Y around $44,990, the Model S around $79,990 and the Model X around $84,990 before destination fees, taxes and incentives. Final prices vary by trim, state and options."}},
+{"@type":"Question","name":"Is the $7,500 federal EV tax credit still available in 2026?","acceptedAnswer":{"@type":"Answer","text":"Many Tesla models may still qualify for the $7,500 federal EV tax credit in 2026, but eligibility depends on battery sourcing, MSRP caps and income limits. Always confirm current IRS rules and Tesla's eligibility page before buying."}},
+{"@type":"Question","name":"How is the monthly Tesla payment calculated?","acceptedAnswer":{"@type":"Answer","text":"The calculator takes the out-the-door price, subtracts incentives and your down payment, then applies your APR and loan term. Sales tax, destination fees and registration costs are estimated separately."}},
+{"@type":"Question","name":"Do states offer extra EV incentives?","acceptedAnswer":{"@type":"Answer","text":"Several states offer rebates, tax exemptions or HOV access. Enter your state or local EV incentive amount in the calculator to see the effect on your effective price and monthly payment."}}
+]}
+</script>
 </head>
 <body>
 <header style="position:relative">
   <nav class="nav">
-    <a class="logo" href="index.html"><span class="dot"></span>Tesla Import Cost Calculator</a>
+    <a class="logo" href="index.html"><span class="dot"></span>Tesla Price Calculator US</a>
     <button class="menu-btn" id="menuBtn" aria-label="Menu">☰</button>
     <div class="links">
       <a href="index.html">Home</a>
@@ -90,40 +126,123 @@ window.addEventListener('resize',()=>{if(window.innerWidth>720)m.classList.remov
 </script>
 <main>
   <section class="hero">
-    <h1>Tesla Price in Pakistan 2026 - Import Cost Calculator</h1>
-    <p>Calculate the estimated import cost of Tesla Model 3, Model Y, Model S and Model X in Pakistan.</p>
+    <span class="badge">United States &bull; 2026 Pricing</span>
+    <h1>Tesla Price Calculator US</h1>
+    <p>Estimate your Tesla out-the-door price, federal EV tax credit, state incentives and monthly payment in the USA.</p>
   </section>
+
   <section class="card">
     <div class="ch">
-      <h2>Import Cost Calculator</h2>
-      <p>Estimated breakdown for Tesla imports in Pakistan</p>
+      <h2>Tesla Cost &amp; Monthly Payment Calculator</h2>
+      <p>Built for US buyers shopping for a new Tesla in 2026</p>
     </div>
     <div class="cb">
       <div class="cf">
-        <div class="field"><label for="m">Tesla Model</label><select id="m"><option>Model 3</option><option>Model Y</option><option>Model S</option><option>Model X</option></select></div>
-        <div class="field"><label for="p">Car Price in USD ($)</label><input id="p" type="number" inputmode="decimal" placeholder="e.g. 39990"></div>
-        <div class="field"><label for="s">Shipping Cost (USD)</label><input id="s" type="number" inputmode="decimal" placeholder="e.g. 1500"></div>
-        <div class="field"><label for="r">Dollar Rate (PKR)</label><input id="r" type="number" inputmode="decimal" placeholder="e.g. 280"></div>
-        <p class="note">Values are estimates only. Actual duty may vary per Pakistan Customs.</p>
+        <div class="field">
+          <label for="model">Tesla Model &amp; Trim</label>
+          <select id="model">
+            <option value="42490">Model 3 RWD - $42,490</option>
+            <option value="47490">Model 3 Long Range AWD - $47,490</option>
+            <option value="54990">Model 3 Performance - $54,990</option>
+            <option value="44990" selected>Model Y RWD - $44,990</option>
+            <option value="48990">Model Y Long Range AWD - $48,990</option>
+            <option value="51490">Model Y Performance - $51,490</option>
+            <option value="79990">Model S AWD - $79,990</option>
+            <option value="94990">Model S Plaid - $94,990</option>
+            <option value="84990">Model X AWD - $84,990</option>
+            <option value="99990">Model X Plaid - $99,990</option>
+          </select>
+        </div>
+        <div class="field"><label for="price">Vehicle Price / MSRP (USD)</label><input id="price" type="number" inputmode="decimal" value="44990"></div>
+        <div class="grid2">
+          <div class="field"><label for="tax">Sales Tax Rate (%)</label><input id="tax" type="number" inputmode="decimal" step="0.01" value="7.25"></div>
+          <div class="field"><label for="dest">Destination &amp; Order Fee (USD)</label><input id="dest" type="number" inputmode="decimal" value="1390"></div>
+        </div>
+        <div class="grid2">
+          <div class="field"><label for="fees">Registration / Doc Fees (USD)</label><input id="fees" type="number" inputmode="decimal" value="500"></div>
+          <div class="field"><label for="state">State / Local EV Incentive (USD)</label><input id="state" type="number" inputmode="decimal" value="0"></div>
+        </div>
+        <label class="check"><input id="fed" type="checkbox" checked> Apply $7,500 federal EV tax credit (if eligible)</label>
+        <div class="grid2">
+          <div class="field"><label for="down">Down Payment (USD)</label><input id="down" type="number" inputmode="decimal" value="5000"></div>
+          <div class="field"><label for="apr">APR (%)</label><input id="apr" type="number" inputmode="decimal" step="0.01" value="6.5"></div>
+        </div>
+        <div class="field">
+          <label for="term">Loan Term</label>
+          <select id="term"><option value="36">36 months</option><option value="48">48 months</option><option value="60" selected>60 months</option><option value="72">72 months</option><option value="84">84 months</option></select>
+        </div>
+        <p class="note">Estimates only. Actual pricing, taxes, registration, incentives and loan terms vary by state and lender. Not affiliated with Tesla, Inc.</p>
       </div>
       <div class="cr">
         <div class="box">
-          <h3>Estimated Import Breakdown</h3>
-          <div class="row"><span class="l">Total in USD (Car + Shipping)</span><span class="v" id="usd">$0</span></div>
-          <div class="row"><span class="l">Customs Duty (Pakistan) - Estimated</span><span class="v" id="duty">PKR 0</span></div>
-          <div class="row"><span class="l">Total Cost in PKR (Approx.)</span><span class="vt" id="total">PKR 0</span></div>
+          <h3>Estimated Price Breakdown</h3>
+          <div class="row"><span class="l">Vehicle MSRP</span><span class="v" id="oMsrp">$44,990</span></div>
+          <div class="row"><span class="l">Sales Tax</span><span class="v" id="oSalesTax">$0</span></div>
+          <div class="row"><span class="l">Destination &amp; Fees</span><span class="v" id="oFees">$0</span></div>
+          <div class="row"><span class="l">Out-the-Door Price</span><span class="v" id="oOtd">$0</span></div>
+          <div class="row"><span class="l">Total Incentives</span><span class="v green" id="oInc">$0</span></div>
+          <div class="row"><span class="l">Effective Price After Incentives</span><span class="v" id="oEff">$0</span></div>
         </div>
         <div class="box">
-          <h3>Monthly Charging Cost vs Petrol</h3>
-          <div class="row"><span class="l">Monthly Charging (Estimated)</span><span class="v">PKR 4,000</span></div>
-          <div class="row"><span class="l">Petrol Equivalent</span><span class="v">PKR 15,000</span></div>
-          <p class="note">For comparison only.</p>
+          <h3>Estimated Monthly Payment</h3>
+          <div class="row"><span class="l">Amount Financed</span><span class="v" id="oLoan">$0</span></div>
+          <div class="row"><span class="l">Estimated Monthly Payment</span><span class="vt" id="oMonthly">$0</span></div>
+          <p class="note">Based on your APR, term and down payment.</p>
+        </div>
+        <div class="box">
+          <h3>5-Year Fuel Savings vs Gas</h3>
+          <div class="row"><span class="l">Gas Cost (5 years)</span><span class="v" id="oGas">$0</span></div>
+          <div class="row"><span class="l">Electricity Cost (5 years)</span><span class="v" id="oElec">$0</span></div>
+          <div class="row"><span class="l">Estimated 5-Year Savings</span><span class="vt green" id="oSave">$0</span></div>
+          <p class="note">Assumes 12,000 miles/year, 25 MPG, $3.50/gal gas and $0.17/kWh home charging.</p>
         </div>
         <div class="native-wrap">
           <script async="async" data-cfasync="false" src="https://bauval.org/21/864a2ef12aa1b787226f3b7436d1cfa1"></script>
           <div id="container-864a2ef12aa1b787226f3b7436d1cfa1"></div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section class="content">
+    <h2>2026 Tesla Prices in the USA</h2>
+    <p>These are estimated base prices before destination fees, taxes and incentives. Trim, options and location can change the final price.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Model</th><th>Starting MSRP</th><th>Best For</th></tr></thead>
+        <tbody>
+          <tr><td>Tesla Model 3</td><td>$42,490</td><td>Commuters and first-time EV buyers</td></tr>
+          <tr><td>Tesla Model Y</td><td>$44,990</td><td>Families and everyday cargo space</td></tr>
+          <tr><td>Tesla Model S</td><td>$79,990</td><td>Long-range luxury sedan performance</td></tr>
+          <tr><td>Tesla Model X</td><td>$84,990</td><td>Large families and premium SUV comfort</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>Federal EV Tax Credit in 2026</h2>
+    <p>The federal clean vehicle credit can reduce your cost by up to <strong>$7,500</strong> when the vehicle and buyer meet IRS requirements. Eligibility depends on the battery and mineral sourcing rules, MSRP caps and income limits. Use the checkbox in the calculator to see the difference, then confirm your eligibility with the IRS and Tesla before ordering.</p>
+
+    <h2>State and Local EV Incentives</h2>
+    <p>Many US states add their own rebates, sales tax exemptions or utility programs. California, Colorado, New Jersey and several other states have offered EV incentives in recent years, but programs change often. Enter your estimated state or local incentive in the calculator to see how it affects your effective price and monthly payment.</p>
+    <ul>
+      <li>Check your state energy office or DMV for current rebates.</li>
+      <li>Ask your utility about off-peak EV charging rates.</li>
+      <li>Confirm whether your state charges an annual EV registration fee.</li>
+    </ul>
+
+    <h2>How to Use the Tesla Price Calculator</h2>
+    <p>Choose a model and trim, then adjust the MSRP if your build has options. Add your state sales tax rate, destination fee and any registration costs. Apply the federal tax credit if you qualify, enter any state incentive, then set your down payment, APR and loan term. The calculator updates the out-the-door price, effective price and monthly payment instantly.</p>
+
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq">
+      <div class="faq-item"><p class="faq-q">How much does a Tesla cost in the USA in 2026?</p><p class="faq-a">The Model 3 starts around $42,490, the Model Y around $44,990, the Model S around $79,990 and the Model X around $84,990 before destination fees, taxes and incentives.</p></div>
+      <div class="faq-item"><p class="faq-q">Is the $7,500 federal EV tax credit still available in 2026?</p><p class="faq-a">Many Tesla models may still qualify, but eligibility depends on battery sourcing, MSRP caps and income limits. Always confirm current IRS rules before buying.</p></div>
+      <div class="faq-item"><p class="faq-q">How is the monthly Tesla payment calculated?</p><p class="faq-a">The calculator subtracts incentives and your down payment from the out-the-door price, then applies your APR and loan term to estimate the monthly payment.</p></div>
+      <div class="faq-item"><p class="faq-q">Do states offer extra EV incentives?</p><p class="faq-a">Several states offer rebates, tax exemptions or HOV access. Enter your estimated state or local incentive amount to see the effect on your price.</p></div>
+    </div>
+
+    <div class="box">
+      <p class="note"><strong>Disclaimer:</strong> This is an independent estimate tool and is not affiliated with Tesla, Inc. Prices, taxes, incentives and financing terms can change. Verify final numbers with Tesla, your state DMV and your lender before purchasing.</p>
     </div>
   </section>
 </main>
@@ -136,13 +255,41 @@ window.addEventListener('resize',()=>{if(window.innerWidth>720)m.classList.remov
       <a href="privacy.html">Privacy Policy</a>
       <a href="contact.html">Contact Us</a>
     </div>
-    <p class="fc">© 2026 Tesla Import Cost Calculator for Pakistan. All rights reserved.</p>
+    <p class="fc">© 2026 Tesla Price Calculator US. All rights reserved.</p>
   </div>
 </footer>
 <script>
-const p=document.getElementById('p'),s=document.getElementById('s'),r=document.getElementById('r'),u=document.getElementById('usd'),d=document.getElementById('duty'),t=document.getElementById('total');
-function calc(){const pv=+p.value||0,sv=+s.value||0,rv=+r.value||0;const us=pv+sv;u.textContent='$'+us.toLocaleString();if(rv<=0){d.textContent='PKR 0';t.textContent='PKR 0';return;}const du=us*rv*0.25,tt=us*rv+du;d.textContent='PKR '+Math.round(du).toLocaleString();t.textContent='PKR '+Math.round(tt).toLocaleString();}
-[p,s,r].forEach(x=>x.addEventListener('input',calc));
+const $=id=>document.getElementById(id);
+const msrp=$('price'),tax=$('tax'),dest=$('dest'),fees=$('fees'),stateInc=$('state'),fed=$('fed'),down=$('down'),apr=$('apr'),term=$('term');
+$('model').addEventListener('change',e=>{msrp.value=e.target.value;calc();});
+function money(n){return '$'+Math.round(n).toLocaleString('en-US');}
+function calc(){
+  const p=+msrp.value||0,t=+tax.value||0,destf=+dest.value||0,feev=+fees.value||0,st=+stateInc.value||0,dp=+down.value||0,ap=+apr.value||0,n=+term.value||60;
+  const salesTax=(p+destf)*(t/100);
+  const otd=p+destf+feev+salesTax;
+  const fedc=fed.checked?7500:0;
+  const inc=fedc+st;
+  const eff=Math.max(otd-inc,0);
+  const principal=Math.max(eff-dp,0);
+  const r=ap/100/12;
+  let monthly=0;
+  if(principal>0){monthly=r>0?principal*r/(1-Math.pow(1+r,-n)):principal/n;}
+  $('oMsrp').textContent=money(p);
+  $('oSalesTax').textContent=money(salesTax);
+  $('oFees').textContent=money(destf+feev);
+  $('oOtd').textContent=money(otd);
+  $('oInc').textContent='-'+money(inc);
+  $('oEff').textContent=money(eff);
+  $('oLoan').textContent=money(principal);
+  $('oMonthly').textContent=money(monthly)+'/mo';
+  const gas=12000/25*3.5*5;
+  const elec=12000/3.5*0.17*5;
+  $('oGas').textContent=money(gas);
+  $('oElec').textContent=money(elec);
+  $('oSave').textContent=money(Math.max(gas-elec,0));
+}
+[msrp,tax,dest,fees,stateInc,fed,down,apr,term].forEach(x=>x.addEventListener('input',calc));
+calc();
 </script>
 <script data-cfasync="false" src="https://bauval.org/14/73dfe65f9c2996910f88ddde014a0a1a"></script>
 </body>
