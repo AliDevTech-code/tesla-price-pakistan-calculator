@@ -92,6 +92,13 @@ header .nav{position:relative}
 .mobile-menu a:hover,.links a:hover{color:#111}
 @media(max-width:720px){.links{display:none!important}.menu-btn{display:inline-flex}.mobile-menu{display:block}}
 @media(min-width:721px){.mobile-menu{display:none!important}}
+
+/* Mobile navigation stability fix */
+header{overflow:visible!important;isolation:isolate}
+@media(max-width:720px){
+  .mobile-menu{position:fixed!important;left:0;right:0;top:var(--menu-top,72px)!important;max-height:calc(100dvh - var(--menu-top,72px));overflow-y:auto;overscroll-behavior:contain;z-index:1001;}
+  header{z-index:1002}
+}
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebApplication","name":"Tesla Price Calculator US","url":"https://tesla-price-calculator-us.vercel.app/","applicationCategory":"FinanceApplication","operatingSystem":"Any","description":"Estimate Tesla out-the-door price, state and local EV incentives, monthly payment and fuel savings in the USA.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
@@ -111,7 +118,43 @@ header .nav{position:relative}
 <a href="index.html">Home</a><a href="blog/">Blog</a><a href="about.html">About Us</a><a href="privacy.html">Privacy Policy</a><a href="contact.html">Contact Us</a>
 </div></div>
 </header>
-<script>(function(){const b=document.getElementById('menuBtn'),m=document.getElementById('mobileMenu');if(!b||!m)return;const close=()=>{m.classList.remove('active');b.setAttribute('aria-expanded','false');};b.addEventListener('click',e=>{e.stopPropagation();const open=m.classList.toggle('active');b.setAttribute('aria-expanded',String(open));});m.addEventListener('click',e=>e.stopPropagation());document.addEventListener('click',e=>{if(!b.contains(e.target)&&!m.contains(e.target))close();});document.addEventListener('keydown',e=>{if(e.key==='Escape')close();});window.addEventListener('resize',()=>{if(window.innerWidth>720)close();});})();</script>
+<script>(function(){
+  const button=document.getElementById('menuBtn');
+  const menu=document.getElementById('mobileMenu');
+  const header=document.querySelector('header');
+  if(!button||!menu||!header)return;
+  const root=document.documentElement;
+  let previousOverflow='';
+  const close=()=>{
+    menu.classList.remove('active');
+    button.setAttribute('aria-expanded','false');
+    button.setAttribute('aria-label','Open navigation menu');
+    root.style.overflow=previousOverflow;
+  };
+  const open=()=>{
+    const headerBottom=header.getBoundingClientRect().bottom;
+    menu.style.setProperty('--menu-top',Math.max(0,headerBottom)+'px');
+    previousOverflow=root.style.overflow;
+    menu.classList.add('active');
+    button.setAttribute('aria-expanded','true');
+    button.setAttribute('aria-label','Close navigation menu');
+    root.style.overflow='hidden';
+  };
+  button.addEventListener('click',event=>{
+    event.preventDefault();
+    event.stopPropagation();
+    if(menu.classList.contains('active'))close();else open();
+  });
+  menu.addEventListener('click',event=>{
+    event.stopPropagation();
+    if(event.target.closest('a'))close();
+  });
+  document.addEventListener('click',event=>{
+    if(!button.contains(event.target)&&!menu.contains(event.target))close();
+  });
+  document.addEventListener('keydown',event=>{if(event.key==='Escape')close();});
+  window.addEventListener('resize',()=>{if(window.innerWidth>720)close();});
+})();</script>
 <main>
   <section class="hero">
     <span class="badge">United States &bull; 2026 Pricing</span>
