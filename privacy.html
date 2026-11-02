@@ -28,11 +28,32 @@ footer{border-top:1px solid #e5e7eb}
 .fl{display:flex;justify-content:center;gap:18px;flex-wrap:wrap}
 .fl a{color:#4b5563;text-decoration:none;font-size:14px}
 .fc{color:#6b7280;font-size:14px}
+/* Shared sticky navigation and responsive menu */
+header{position:sticky!important;top:0;z-index:1000;background:#fff}
+header .nav{position:relative}
+.menu-btn{display:none;align-items:center;justify-content:center;background:#fff;border:1px solid #e5e7eb;border-radius:8px;padding:8px 11px;font-size:18px;line-height:1;cursor:pointer;color:#111}
+.links{display:flex;gap:18px;flex-wrap:wrap}
+.mobile-menu{position:absolute;left:0;right:0;top:100%;display:block;background:#fff;border-bottom:1px solid #e5e7eb;box-shadow:0 10px 30px -20px rgba(15,23,42,.9);transform:translateY(-8px);opacity:0;visibility:hidden;pointer-events:none;transition:transform .2s ease,opacity .2s ease,visibility .2s ease}
+.mobile-menu.active{transform:translateY(0);opacity:1;visibility:visible;pointer-events:auto}
+.mobile-menu-inner{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;padding:8px 20px}
+.mobile-menu a{display:block;text-decoration:none;color:#4b5563;font-size:14px;padding:12px 0}
+.mobile-menu a:hover,.links a:hover{color:#111}
+@media(max-width:720px){.links{display:none!important}.menu-btn{display:inline-flex}.mobile-menu{display:block}}
+@media(min-width:721px){.mobile-menu{display:none!important}}
 </style>
 </head>
 <body>
-<header><nav class="nav"><a class="logo" href="index.html"><span class="dot"></span>Tesla Price Calculator US</a><div class="links">
-      <a href="blog/">Blog</a><a href="index.html">Home</a><a href="about.html">About Us</a><a href="privacy.html">Privacy Policy</a><a href="contact.html">Contact Us</a></div></nav></header>
+<header>
+<nav class="nav">
+<a class="logo" href="index.html"><span class="dot"></span>Tesla Price Calculator US</a>
+<button class="menu-btn" id="menuBtn" type="button" aria-label="Open navigation menu" aria-controls="mobileMenu" aria-expanded="false">☰</button>
+<div class="links"><a href="index.html">Home</a><a href="blog/">Blog</a><a href="about.html">About Us</a><a href="privacy.html">Privacy Policy</a><a href="contact.html">Contact Us</a></div>
+</nav>
+<div class="mobile-menu" id="mobileMenu"><div class="mobile-menu-inner">
+<a href="index.html">Home</a><a href="blog/">Blog</a><a href="about.html">About Us</a><a href="privacy.html">Privacy Policy</a><a href="contact.html">Contact Us</a>
+</div></div>
+</header>
+<script>(function(){const b=document.getElementById('menuBtn'),m=document.getElementById('mobileMenu');if(!b||!m)return;const close=()=>{m.classList.remove('active');b.setAttribute('aria-expanded','false');};b.addEventListener('click',e=>{e.stopPropagation();const open=m.classList.toggle('active');b.setAttribute('aria-expanded',String(open));});m.addEventListener('click',e=>e.stopPropagation());document.addEventListener('click',e=>{if(!b.contains(e.target)&&!m.contains(e.target))close();});document.addEventListener('keydown',e=>{if(e.key==='Escape')close();});window.addEventListener('resize',()=>{if(window.innerWidth>720)close();});})();</script>
 <main>
 <section><h1>Privacy Policy</h1></section>
 <section class="card">
