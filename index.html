@@ -257,8 +257,10 @@ function money(n){return '$'+Math.round(n).toLocaleString('en-US');}
 function calc(){
   const read=el=>{const value=Number(el.value);return Number.isFinite(value)?Math.max(0,value):0;};
   const p=read(msrp),t=read(tax),destf=read(dest),feev=read(fees),dp=read(down),ap=read(apr),n=Number(term.value)||60;
-  const salesTax=(p+destf)*(t/100);
-  const otd=p+destf+feev+salesTax;
+  const hasPrice=p>0;
+  const feeTotal=hasPrice?destf+feev:0;
+  const salesTax=hasPrice?(p+destf)*(t/100):0;
+  const otd=hasPrice?p+feeTotal+salesTax:0;
   const inc=Math.min(read(stateInc),otd);
   const eff=Math.max(otd-inc,0);
   const principal=Math.max(eff-dp,0);
@@ -267,7 +269,7 @@ function calc(){
   if(principal>0){monthly=r>0?principal*r/(1-Math.pow(1+r,-n)):principal/n;}
   $('oMsrp').textContent=money(p);
   $('oSalesTax').textContent=money(salesTax);
-  $('oFees').textContent=money(destf+feev);
+  $('oFees').textContent=money(feeTotal);
   $('oOtd').textContent=money(otd);
   $('oInc').textContent=inc>0?'-'+money(inc):money(0);
   $('oEff').textContent=money(eff);
