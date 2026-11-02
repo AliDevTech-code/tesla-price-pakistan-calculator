@@ -4,13 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tesla Price Calculator US 2026 - Monthly Payment & Tax Credit</title>
-<meta name="description" content="Free Tesla price calculator for the USA. Estimate out-the-door price, $7,500 federal EV tax credit, state incentives and monthly payment for Model 3, Model Y, Model S and Model X in 2026.">
-<meta name="keywords" content="Tesla price calculator US, Tesla cost calculator USA, Tesla monthly payment calculator, Tesla Model 3 price USA, Tesla Model Y price USA, federal EV tax credit 2026">
+<meta name="description" content="Estimate your Tesla out-the-door price, state and local EV incentives, monthly payment and potential fuel savings with this free US calculator.">
+<meta name="keywords" content="Tesla price calculator US, Tesla out-the-door price, Tesla monthly payment calculator, Tesla Model 3 price USA, Tesla Model Y price USA, EV state incentives">
 <meta name="robots" content="index, follow">
 <meta name="google-site-verification" content="FWrX2vy-J4xjHthjgB5HoOyfY0BDs-50eKfYe9muQok">
 <link rel="canonical" href="https://tesla-price-calculator-us.vercel.app/">
 <meta property="og:title" content="Tesla Price Calculator US 2026 - Monthly Payment & Tax Credit">
-<meta property="og:description" content="Estimate your Tesla out-the-door price, federal EV tax credit and monthly payment in the USA.">
+<meta property="og:description" content="Estimate Tesla out-the-door cost, state and local EV incentives, monthly payments and fuel savings in the USA.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://tesla-price-calculator-us.vercel.app/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -84,13 +84,13 @@ footer{border-top:1px solid #e5e7eb}
 .fc{color:#6b7280;font-size:14px}
 </style>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebApplication","name":"Tesla Price Calculator US","url":"https://tesla-price-calculator-us.vercel.app/","applicationCategory":"FinanceApplication","operatingSystem":"Any","description":"Estimate Tesla out-the-door price, federal EV tax credit, state incentives and monthly payment in the USA.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+{"@context":"https://schema.org","@type":"WebApplication","name":"Tesla Price Calculator US","url":"https://tesla-price-calculator-us.vercel.app/","applicationCategory":"FinanceApplication","operatingSystem":"Any","description":"Estimate Tesla out-the-door price, state and local EV incentives, monthly payment and fuel savings in the USA.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
 {"@type":"Question","name":"How much does a Tesla cost in the USA in 2026?","acceptedAnswer":{"@type":"Answer","text":"In 2026, the Tesla Model 3 starts around $42,490, the Model Y around $44,990, the Model S around $79,990 and the Model X around $84,990 before destination fees, taxes and incentives. Final prices vary by trim, state and options."}},
-{"@type":"Question","name":"Is the $7,500 federal EV tax credit still available in 2026?","acceptedAnswer":{"@type":"Answer","text":"Many Tesla models may still qualify for the $7,500 federal EV tax credit in 2026, but eligibility depends on battery sourcing, MSRP caps and income limits. Always confirm current IRS rules and Tesla's eligibility page before buying."}},
-{"@type":"Question","name":"How is the monthly Tesla payment calculated?","acceptedAnswer":{"@type":"Answer","text":"The calculator takes the out-the-door price, subtracts incentives and your down payment, then applies your APR and loan term. Sales tax, destination fees and registration costs are estimated separately."}},
+{"@type":"Question","name":"Is the $7,500 federal EV tax credit still available in 2026?","acceptedAnswer":{"@type":"Answer","text":"No. The federal new and previously-owned clean vehicle credits ended for vehicles acquired after September 30, 2025. Earlier qualifying acquisitions may still be claimed subject to IRS requirements, including Form 8936. New purchases after that date do not qualify."}},
+{"@type":"Question","name":"How is the monthly Tesla payment calculated?","acceptedAnswer":{"@type":"Answer","text":"The calculator subtracts your state or local incentive and down payment from the out-the-door price, then applies your APR and loan term. Sales tax, destination fees and registration costs are estimated separately."}},
 {"@type":"Question","name":"Do states offer extra EV incentives?","acceptedAnswer":{"@type":"Answer","text":"Several states offer rebates, tax exemptions or HOV access. Enter your state or local EV incentive amount in the calculator to see the effect on your effective price and monthly payment."}}
 ]}
 </script>
@@ -128,7 +128,7 @@ window.addEventListener('resize',()=>{if(window.innerWidth>720)m.classList.remov
   <section class="hero">
     <span class="badge">United States &bull; 2026 Pricing</span>
     <h1>Tesla Price Calculator US</h1>
-    <p>Estimate your Tesla out-the-door price, federal EV tax credit, state incentives and monthly payment in the USA.</p>
+    <p>Estimate your Tesla out-the-door price, state and local EV incentives, monthly payment and fuel savings in the USA.</p>
   </section>
 
   <section class="card">
@@ -162,7 +162,7 @@ window.addEventListener('resize',()=>{if(window.innerWidth>720)m.classList.remov
           <div class="field"><label for="fees">Registration / Doc Fees (USD)</label><input id="fees" type="number" inputmode="decimal" value="500"></div>
           <div class="field"><label for="state">State / Local EV Incentive (USD)</label><input id="state" type="number" inputmode="decimal" value="0"></div>
         </div>
-        <label class="check"><input id="fed" type="checkbox" checked> Apply $7,500 federal EV tax credit (if eligible)</label>
+        
         <div class="grid2">
           <div class="field"><label for="down">Down Payment (USD)</label><input id="down" type="number" inputmode="decimal" value="5000"></div>
           <div class="field"><label for="apr">APR (%)</label><input id="apr" type="number" inputmode="decimal" step="0.01" value="6.5"></div>
@@ -215,8 +215,8 @@ window.addEventListener('resize',()=>{if(window.innerWidth>720)m.classList.remov
       </table>
     </div>
 
-    <h2>Federal EV Tax Credit in 2026</h2>
-    <p>The federal clean vehicle credit can reduce your cost by up to <strong>$7,500</strong> when the vehicle and buyer meet IRS requirements. Eligibility depends on the battery and mineral sourcing rules, MSRP caps and income limits. Use the checkbox in the calculator to see the difference, then confirm your eligibility with the IRS and Tesla before ordering.</p>
+    <h2>Federal EV Tax Credit Status (Ended)</h2>
+    <p>The federal New Clean Vehicle Credit of up to $7,500 and Previously-Owned Clean Vehicle Credit of up to $4,000 ended for vehicles acquired after September 30, 2025. An earlier qualifying acquisition may still be claimed subject to IRS acquisition and placed-in-service requirements and the applicable filing rules, including Form 8936. A new vehicle acquired after September 30, 2025 does not qualify. See the <a href="https://www.irs.gov/clean-vehicle-tax-credits" target="_blank" rel="noopener">IRS Clean Vehicle Credits guidance</a> and consult a tax professional about an earlier purchase.</p>
 
     <h2>State and Local EV Incentives</h2>
     <p>Many US states add their own rebates, sales tax exemptions or utility programs. California, Colorado, New Jersey and several other states have offered EV incentives in recent years, but programs change often. Enter your estimated state or local incentive in the calculator to see how it affects your effective price and monthly payment.</p>
@@ -227,12 +227,12 @@ window.addEventListener('resize',()=>{if(window.innerWidth>720)m.classList.remov
     </ul>
 
     <h2>How to Use the Tesla Price Calculator</h2>
-    <p>Choose a model and trim, then adjust the MSRP if your build has options. Add your state sales tax rate, destination fee and any registration costs. Apply the federal tax credit if you qualify, enter any state incentive, then set your down payment, APR and loan term. The calculator updates the out-the-door price, effective price and monthly payment instantly.</p>
+    <p>Choose a model and trim, then adjust the MSRP if your build has options. Add your state sales tax rate, destination fee and any registration costs. Enter any state or local incentive, then set your down payment, APR and loan term. The calculator updates the out-the-door price, effective price and monthly payment instantly.</p>
 
     <h2>Frequently Asked Questions</h2>
     <div class="faq">
       <div class="faq-item"><p class="faq-q">How much does a Tesla cost in the USA in 2026?</p><p class="faq-a">The Model 3 starts around $42,490, the Model Y around $44,990, the Model S around $79,990 and the Model X around $84,990 before destination fees, taxes and incentives.</p></div>
-      <div class="faq-item"><p class="faq-q">Is the $7,500 federal EV tax credit still available in 2026?</p><p class="faq-a">Many Tesla models may still qualify, but eligibility depends on battery sourcing, MSRP caps and income limits. Always confirm current IRS rules before buying.</p></div>
+      <div class="faq-item"><p class="faq-q">Is the $7,500 federal EV tax credit still available in 2026?</p><p class="faq-a">No. The federal new and previously-owned clean vehicle credits ended for vehicles acquired after September 30, 2025. Earlier qualifying acquisitions may still be claimed subject to IRS requirements, including Form 8936. New purchases after that date do not qualify. See the <a href="https://www.irs.gov/clean-vehicle-tax-credits" target="_blank" rel="noopener">IRS guidance</a>.</p></div>
       <div class="faq-item"><p class="faq-q">How is the monthly Tesla payment calculated?</p><p class="faq-a">The calculator subtracts incentives and your down payment from the out-the-door price, then applies your APR and loan term to estimate the monthly payment.</p></div>
       <div class="faq-item"><p class="faq-q">Do states offer extra EV incentives?</p><p class="faq-a">Several states offer rebates, tax exemptions or HOV access. Enter your estimated state or local incentive amount to see the effect on your price.</p></div>
     </div>
@@ -256,15 +256,14 @@ window.addEventListener('resize',()=>{if(window.innerWidth>720)m.classList.remov
 </footer>
 <script>
 const $=id=>document.getElementById(id);
-const msrp=$('price'),tax=$('tax'),dest=$('dest'),fees=$('fees'),stateInc=$('state'),fed=$('fed'),down=$('down'),apr=$('apr'),term=$('term');
+const msrp=$('price'),tax=$('tax'),dest=$('dest'),fees=$('fees'),stateInc=$('state'),down=$('down'),apr=$('apr'),term=$('term');
 $('model').addEventListener('change',e=>{msrp.value=e.target.value;calc();});
 function money(n){return '$'+Math.round(n).toLocaleString('en-US');}
 function calc(){
   const p=+msrp.value||0,t=+tax.value||0,destf=+dest.value||0,feev=+fees.value||0,st=+stateInc.value||0,dp=+down.value||0,ap=+apr.value||0,n=+term.value||60;
   const salesTax=(p+destf)*(t/100);
   const otd=p+destf+feev+salesTax;
-  const fedc=fed.checked?7500:0;
-  const inc=fedc+st;
+  const inc=st;
   const eff=Math.max(otd-inc,0);
   const principal=Math.max(eff-dp,0);
   const r=ap/100/12;
@@ -284,7 +283,7 @@ function calc(){
   $('oElec').textContent=money(elec);
   $('oSave').textContent=money(Math.max(gas-elec,0));
 }
-[msrp,tax,dest,fees,stateInc,fed,down,apr,term].forEach(x=>x.addEventListener('input',calc));
+[msrp,tax,dest,fees,stateInc,down,apr,term].forEach(x=>x.addEventListener('input',calc));
 calc();
 </script>
 <script data-cfasync="false" src="https://bauval.org/14/6db743f89bc9ce57048cab2a7682e06d"></script>
