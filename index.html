@@ -85,12 +85,7 @@ footer{border-top:1px solid #e5e7eb}
 {"@context":"https://schema.org","@type":"WebApplication","name":"Tesla Price Calculator US","url":"https://tesla-price-calculator-us.vercel.app/","applicationCategory":"FinanceApplication","operatingSystem":"Any","description":"Estimate Tesla out-the-door price, state and local EV incentives, monthly payment and fuel savings in the USA.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
 </script>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
-{"@type":"Question","name":"How much does a Tesla cost in the USA in 2026?","acceptedAnswer":{"@type":"Answer","text":"In 2026, the Tesla Model 3 starts around $42,490, the Model Y around $44,990, the Model S around $79,990 and the Model X around $84,990 before destination fees, taxes and incentives. Final prices vary by trim, state and options."}},
-{"@type":"Question","name":"Is the $7,500 federal EV tax credit still available in 2026?","acceptedAnswer":{"@type":"Answer","text":"No. The federal new and previously-owned clean vehicle credits ended for vehicles acquired after September 30, 2025. Earlier qualifying acquisitions may still be claimed subject to IRS requirements, including Form 8936. New purchases after that date do not qualify."}},
-{"@type":"Question","name":"How is the monthly Tesla payment calculated?","acceptedAnswer":{"@type":"Answer","text":"The calculator subtracts your state or local incentive and down payment from the out-the-door price, then applies your APR and loan term. Sales tax, destination fees and registration costs are estimated separately."}},
-{"@type":"Question","name":"Do states offer extra EV incentives?","acceptedAnswer":{"@type":"Answer","text":"Several states offer rebates, tax exemptions or HOV access. Enter your state or local EV incentive amount in the calculator to see the effect on your effective price and monthly payment."}}
-]}
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How much does a Tesla cost in the USA in 2026?","acceptedAnswer":{"@type":"Answer","text":"Tesla lists the Model 3 from $36,990 and Model Y from $39,990 before destination/order fees, taxes and options. Model S and Model X are no longer in production; pre-owned inventory prices vary."}},{"@type":"Question","name":"Is the $7,500 federal EV tax credit still available in 2026?","acceptedAnswer":{"@type":"Answer","text":"No. The federal new and previously-owned clean vehicle credits ended for vehicles acquired after September 30, 2025. Earlier qualifying acquisitions may still be claimed subject to IRS requirements, including Form 8936. New purchases after that date do not qualify."}},{"@type":"Question","name":"How is the monthly Tesla payment calculated?","acceptedAnswer":{"@type":"Answer","text":"The calculator subtracts your state or local incentive and down payment from the out-the-door price, then applies your APR and loan term. Sales tax, destination fees and registration costs are estimated separately."}},{"@type":"Question","name":"Do states offer extra EV incentives?","acceptedAnswer":{"@type":"Answer","text":"Several states offer rebates, tax exemptions or HOV access. Enter your state or local EV incentive amount in the calculator to see the effect on your effective price and monthly payment."}}]}
 </script>
 </head>
 <body>
@@ -132,44 +127,46 @@ window.addEventListener('resize',()=>{if(window.innerWidth>720)m.classList.remov
   <section class="card">
     <div class="ch">
       <h2>Tesla Cost &amp; Monthly Payment Calculator</h2>
-      <p>Built for US buyers shopping for a new Tesla in 2026</p>
+      <p>Built for US buyers comparing Tesla costs in 2026</p>
     </div>
     <div class="cb">
       <div class="cf">
         <div class="field">
           <label for="model">Tesla Model &amp; Trim</label>
           <select id="model">
-            <option value="42490">Model 3 RWD - $42,490</option>
-            <option value="47490">Model 3 Long Range AWD - $47,490</option>
-            <option value="54990">Model 3 Performance - $54,990</option>
-            <option value="44990" selected>Model Y RWD - $44,990</option>
-            <option value="48990">Model Y Long Range AWD - $48,990</option>
-            <option value="51490">Model Y Performance - $51,490</option>
-            <option value="79990">Model S AWD - $79,990</option>
-            <option value="94990">Model S Plaid - $94,990</option>
-            <option value="84990">Model X AWD - $84,990</option>
-            <option value="99990">Model X Plaid - $99,990</option>
+            <option value="36990">Model 3 RWD - $36,990</option>
+            <option value="42490">Model 3 Premium RWD - $42,490</option>
+            <option value="47490">Model 3 Premium AWD - $47,490</option>
+            <option value="54990">Model 3 Performance AWD - $54,990</option>
+            <option value="39990" selected>Model Y RWD - $39,990</option>
+            <option value="41990">Model Y AWD - $41,990</option>
+            <option value="45990">Model Y Premium RWD - $45,990</option>
+            <option value="49990">Model Y Premium AWD - $49,990</option>
+            <option value="61990">Model Y L Premium - $61,990</option>
+            <option value="">Model Y Performance - enter current Tesla quote</option>
+            <option value="">Model S - pre-owned only; enter listing price</option>
+            <option value="">Model X - pre-owned only; enter listing price</option>
           </select>
         </div>
-        <div class="field"><label for="price">Vehicle Price / MSRP (USD)</label><input id="price" type="number" inputmode="decimal" value="44990"></div>
+        <div class="field"><label for="price">Vehicle Price / MSRP (USD)</label><input id="price" type="number" inputmode="decimal" min="0" value="39990"></div>
         <div class="grid2">
-          <div class="field"><label for="tax">Sales Tax Rate (%)</label><input id="tax" type="number" inputmode="decimal" step="0.01" value="7.25"></div>
-          <div class="field"><label for="dest">Destination &amp; Order Fee (USD)</label><input id="dest" type="number" inputmode="decimal" value="1390"></div>
+          <div class="field"><label for="tax">Sales Tax Rate (%)</label><input id="tax" type="number" inputmode="decimal" min="0" step="0.01" value="7.25"></div>
+          <div class="field"><label for="dest">Destination &amp; Order Fee (USD)</label><input id="dest" type="number" inputmode="decimal" min="0" value="1640"></div>
         </div>
         <div class="grid2">
-          <div class="field"><label for="fees">Registration / Doc Fees (USD)</label><input id="fees" type="number" inputmode="decimal" value="500"></div>
-          <div class="field"><label for="state">State / Local EV Incentive (USD)</label><input id="state" type="number" inputmode="decimal" value="0"></div>
+          <div class="field"><label for="fees">Registration / Doc Fees (USD)</label><input id="fees" type="number" inputmode="decimal" min="0" value="500"></div>
+          <div class="field"><label for="state">State / Local EV Incentive (USD)</label><input id="state" type="number" inputmode="decimal" min="0" value="0"></div>
         </div>
         
         <div class="grid2">
-          <div class="field"><label for="down">Down Payment (USD)</label><input id="down" type="number" inputmode="decimal" value="5000"></div>
-          <div class="field"><label for="apr">APR (%)</label><input id="apr" type="number" inputmode="decimal" step="0.01" value="6.5"></div>
+          <div class="field"><label for="down">Down Payment (USD)</label><input id="down" type="number" inputmode="decimal" min="0" value="5000"></div>
+          <div class="field"><label for="apr">APR (%)</label><input id="apr" type="number" inputmode="decimal" min="0" step="0.01" value="6.5"></div>
         </div>
         <div class="field">
           <label for="term">Loan Term</label>
           <select id="term"><option value="36">36 months</option><option value="48">48 months</option><option value="60" selected>60 months</option><option value="72">72 months</option><option value="84">84 months</option></select>
         </div>
-        <p class="note">Estimates only. Actual pricing, taxes, registration, incentives and loan terms vary by state and lender. Not affiliated with Tesla, Inc.</p>
+        <p class="note">For trims without a listed price and pre-owned Model S/X, enter the current quoted or listing price manually. Actual taxes, fees, incentives and loan terms vary. Not affiliated with Tesla, Inc.</p>
       </div>
       <div class="cr">
         <div class="box">
@@ -200,15 +197,15 @@ window.addEventListener('resize',()=>{if(window.innerWidth>720)m.classList.remov
 
   <section class="content">
     <h2>2026 Tesla Prices in the USA</h2>
-    <p><strong>Pricing note (November 2, 2026):</strong> These are indicative estimates currently shown in this guide and have not been independently verified against Tesla’s live configurator. Confirm each trim and destination fee directly with <a href="https://www.tesla.com/" target="_blank" rel="noopener">Tesla</a> before purchase. Prices below are before destination fees, taxes and incentives. Trim, options and location can change the final price.</p>
+    <p><strong>Pricing checked November 2, 2026:</strong> Tesla’s US pages list the Model 3 starting at $36,990 and the Model Y starting at $39,990, before destination/order fees, taxes and options. The reviewed configurator showed a $1,390 destination fee plus a $250 order fee. Prices and availability can vary by delivery ZIP and change without notice. See <a href="https://www.tesla.com/model3/design" target="_blank" rel="noopener">Tesla Model 3 pricing</a> and <a href="https://www.tesla.com/modely/design" target="_blank" rel="noopener">Tesla Model Y pricing</a>. Tesla says Model S and Model X are no longer in production; pre-owned inventory may still be available (<a href="https://www.tesla.com/models" target="_blank" rel="noopener">Model S</a> / <a href="https://www.tesla.com/modelx" target="_blank" rel="noopener">Model X</a>).</p>
     <div class="table-wrap">
       <table>
         <thead><tr><th>Model</th><th>Starting MSRP</th><th>Best For</th></tr></thead>
         <tbody>
-          <tr><td>Tesla Model 3</td><td>$42,490</td><td>Commuters and first-time EV buyers</td></tr>
-          <tr><td>Tesla Model Y</td><td>$44,990</td><td>Families and everyday cargo space</td></tr>
-          <tr><td>Tesla Model S</td><td>$79,990</td><td>Long-range luxury sedan performance</td></tr>
-          <tr><td>Tesla Model X</td><td>$84,990</td><td>Large families and premium SUV comfort</td></tr>
+          <tr><td>Tesla Model 3 RWD</td><td>$36,990</td><td>Compact electric sedan; current base trim</td></tr>
+          <tr><td>Tesla Model Y RWD</td><td>$39,990</td><td>Electric SUV; current base trim</td></tr>
+          <tr><td>Tesla Model S</td><td>No new production</td><td>Pre-owned inventory only; price varies</td></tr>
+          <tr><td>Tesla Model X</td><td>No new production</td><td>Pre-owned inventory only; price varies</td></tr>
         </tbody>
       </table>
     </div>
@@ -229,9 +226,9 @@ window.addEventListener('resize',()=>{if(window.innerWidth>720)m.classList.remov
 
     <h2>Frequently Asked Questions</h2>
     <div class="faq">
-      <div class="faq-item"><p class="faq-q">How much does a Tesla cost in the USA in 2026?</p><p class="faq-a">The Model 3 starts around $42,490, the Model Y around $44,990, the Model S around $79,990 and the Model X around $84,990 before destination fees, taxes and incentives.</p></div>
+      <div class="faq-item"><p class="faq-q">How much does a Tesla cost in the USA in 2026?</p><p class="faq-a">Tesla lists the Model 3 from $36,990 and Model Y from $39,990 before destination/order fees, taxes and options. Model S and Model X are no longer in production; pre-owned inventory prices vary.</p></div>
       <div class="faq-item"><p class="faq-q">Is the $7,500 federal EV tax credit still available in 2026?</p><p class="faq-a">No. The federal new and previously-owned clean vehicle credits ended for vehicles acquired after September 30, 2025. Earlier qualifying acquisitions may still be claimed subject to IRS requirements, including Form 8936. New purchases after that date do not qualify. See the <a href="https://www.irs.gov/clean-vehicle-tax-credits" target="_blank" rel="noopener">IRS guidance</a>.</p></div>
-      <div class="faq-item"><p class="faq-q">How is the monthly Tesla payment calculated?</p><p class="faq-a">The calculator subtracts incentives and your down payment from the out-the-door price, then applies your APR and loan term to estimate the monthly payment.</p></div>
+      <div class="faq-item"><p class="faq-q">How is the monthly Tesla payment calculated?</p><p class="faq-a">The calculator subtracts your state or local incentive and down payment from the out-the-door price, then applies your APR and loan term to estimate the monthly payment.</p></div>
       <div class="faq-item"><p class="faq-q">Do states offer extra EV incentives?</p><p class="faq-a">Several states offer rebates, tax exemptions or HOV access. Enter your estimated state or local incentive amount to see the effect on your price.</p></div>
     </div>
 
@@ -258,10 +255,11 @@ const msrp=$('price'),tax=$('tax'),dest=$('dest'),fees=$('fees'),stateInc=$('sta
 $('model').addEventListener('change',e=>{msrp.value=e.target.value;calc();});
 function money(n){return '$'+Math.round(n).toLocaleString('en-US');}
 function calc(){
-  const p=+msrp.value||0,t=+tax.value||0,destf=+dest.value||0,feev=+fees.value||0,st=+stateInc.value||0,dp=+down.value||0,ap=+apr.value||0,n=+term.value||60;
+  const read=el=>{const value=Number(el.value);return Number.isFinite(value)?Math.max(0,value):0;};
+  const p=read(msrp),t=read(tax),destf=read(dest),feev=read(fees),dp=read(down),ap=read(apr),n=Number(term.value)||60;
   const salesTax=(p+destf)*(t/100);
   const otd=p+destf+feev+salesTax;
-  const inc=st;
+  const inc=Math.min(read(stateInc),otd);
   const eff=Math.max(otd-inc,0);
   const principal=Math.max(eff-dp,0);
   const r=ap/100/12;
@@ -271,7 +269,7 @@ function calc(){
   $('oSalesTax').textContent=money(salesTax);
   $('oFees').textContent=money(destf+feev);
   $('oOtd').textContent=money(otd);
-  $('oInc').textContent='-'+money(inc);
+  $('oInc').textContent=inc>0?'-'+money(inc):money(0);
   $('oEff').textContent=money(eff);
   $('oLoan').textContent=money(principal);
   $('oMonthly').textContent=money(monthly)+'/mo';
