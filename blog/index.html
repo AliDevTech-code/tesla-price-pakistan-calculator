@@ -70,6 +70,10 @@ header .nav{position:relative}
 .mobile-menu{position:fixed!important;left:0;right:0;top:var(--menu-top,72px)!important;max-height:calc(100dvh - var(--menu-top,72px));overflow-y:auto;overscroll-behavior:contain;z-index:1001}
 @media(max-width:720px){.links{display:none!important}.menu-btn{display:inline-flex!important;align-items:center;justify-content:center}.mobile-menu{display:block}}
 @media(min-width:721px){.mobile-menu{display:none!important}}
+
+/* Keep the /blog/ dropdown links left-aligned instead of centered */
+.mobile-menu-inner{align-items:stretch!important;text-align:left!important}
+.mobile-menu a{width:100%;text-align:left!important}
 </style>
 </head>
 <body>
