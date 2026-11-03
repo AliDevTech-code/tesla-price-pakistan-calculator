@@ -71,9 +71,9 @@ header .nav{position:relative}
 @media(max-width:720px){.links{display:none!important}.menu-btn{display:inline-flex!important;align-items:center;justify-content:center}.mobile-menu{display:block}}
 @media(min-width:721px){.mobile-menu{display:none!important}}
 
-/* Keep the /blog/ dropdown links left-aligned instead of centered */
-.mobile-menu-inner{align-items:stretch!important;text-align:left!important}
-.mobile-menu a{width:100%;text-align:left!important}
+/* Force /blog/ mobile dropdown links to the left edge */
+#mobileMenu .mobile-menu-inner{display:flex!important;flex-direction:column!important;align-items:flex-start!important;justify-content:flex-start!important;text-align:left!important}
+#mobileMenu .mobile-menu-inner>a{display:block!important;align-self:flex-start!important;width:auto!important;min-width:0!important;margin:0 auto 0 0!important;padding-left:0!important;text-align:left!important}
 </style>
 </head>
 <body>
