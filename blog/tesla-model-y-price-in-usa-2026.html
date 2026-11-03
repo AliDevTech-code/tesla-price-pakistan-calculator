@@ -80,6 +80,14 @@ header{overflow:visible!important;isolation:isolate}
   .mobile-menu{position:fixed!important;left:0;right:0;top:var(--menu-top,72px)!important;max-height:calc(100dvh - var(--menu-top,72px));overflow-y:auto;overscroll-behavior:contain;z-index:1001;}
   header{z-index:1002}
 }
+
+/* Shared homepage navigation: fixed header and identical responsive menu */
+body{padding-top:var(--site-header-height,58px)}
+header{position:fixed!important;top:0!important;left:0!important;right:0!important;width:100%;z-index:1002!important;background:#fff!important;overflow:visible!important;isolation:isolate}
+header .nav{position:relative}
+.mobile-menu{position:fixed!important;left:0;right:0;top:var(--menu-top,72px)!important;max-height:calc(100dvh - var(--menu-top,72px));overflow-y:auto;overscroll-behavior:contain;z-index:1001}
+@media(max-width:720px){.links{display:none!important}.menu-btn{display:inline-flex!important;align-items:center;justify-content:center}.mobile-menu{display:block}}
+@media(min-width:721px){.mobile-menu{display:none!important}}
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BlogPosting","headline":"Tesla Model Y Price in USA - How Much Does It Cost in 2026?","description":"Tesla Model Y price in USA 2026 with current Tesla-listed trims, destination and order fees, sales tax, state incentives and monthly payment estimates.","image":"https://i.postimg.cc/wj1GBwDy/IMG-20261101-WA8936.jpg","author":{"@type":"Organization","name":"EV Calculator"},"publisher":{"@type":"Organization","name":"EV Calculator"},"datePublished":"2026-11-01","dateModified":"2026-11-02","mainEntityOfPage":{"@type":"WebPage","@id":"https://tesla-price-calculator-us.vercel.app/blog/tesla-model-y-price-in-usa-2026.html"}}
@@ -111,6 +119,10 @@ header{overflow:visible!important;isolation:isolate}
   if(!button||!menu||!header)return;
   const root=document.documentElement;
   let previousOverflow='';
+  const syncHeaderHeight=()=>root.style.setProperty('--site-header-height',header.offsetHeight+'px');
+  syncHeaderHeight();
+  if('ResizeObserver' in window){new ResizeObserver(syncHeaderHeight).observe(header);}
+  window.addEventListener('resize',syncHeaderHeight);
   const close=()=>{
     menu.classList.remove('active');
     button.setAttribute('aria-expanded','false');
@@ -225,29 +237,7 @@ header{overflow:visible!important;isolation:isolate}
     <p>For US families who can charge at home, the Model Y remains one of the most practical EVs on the market. The RWD is the value pick, the Long Range AWD is the best all-rounder, and the Performance is for buyers who want more speed. Factor in available state and local incentives, insurance and charging costs before choosing a trim.</p>
     <p>If you are deciding between the Model Y and the smaller Model 3, read our <a class="inline" href="tesla-model-y-juniper-2026-vs-model-3-highland-which-to-buy-usa.html">Model Y Juniper vs Model 3 Highland comparison</a>. For the sedan side, see the full <a class="inline" href="tesla-model-3-price-in-usa-2026.html">Tesla Model 3 price in USA 2026 breakdown</a>.</p>
 
-    <div class="cta">
-      <div>
-        <h3 style="font-size:18px;font-weight:600">Calculate Your Model Y Payment</h3>
-        <p style="color:#4b5563;margin-top:4px">Enter your state tax, incentives, down payment and APR for an instant estimate.</p>
-      </div>
-      <a href="../index.html">Open the Calculator</a>
-    </div>
-
-    <h2>Frequently Asked Questions</h2>
-    <div class="faq">
-      <div class="faq-item"><p class="faq-q">How much does a Tesla Model Y cost in the USA in 2026?</p><p class="faq-a">Tesla lists the Model Y RWD at $39,990, AWD at $41,990, Premium RWD at $45,990, Premium AWD at $49,990 and Model Y L Premium at $61,990 before destination/order fees, taxes and options. Confirm the Performance quote in Tesla’s configurator because a verified current price was not available in the reviewed page.</p></div>
-      <div class="faq-item"><p class="faq-q">What is the out-the-door price of a Tesla Model Y?</p><p class="faq-a">Using a $39,990 RWD price, $1,640 destination/order fees, 7% sales tax on the vehicle and destination fee, and $500 estimated registration/doc fees gives an illustrative out-the-door estimate of about $45,044 before state/local incentives.</p></div>
-      <div class="faq-item"><p class="faq-q">Is the federal EV tax credit status still available for new purchases in 2026?</p><p class="faq-a">No. The federal new and previously-owned clean vehicle credits ended for vehicles acquired after September 30, 2025. Earlier qualifying acquisitions may still be claimed subject to IRS requirements, including Form 8936. New purchases after that date do not qualify.</p></div>
-      <div class="faq-item"><p class="faq-q">What is the monthly payment on a Tesla Model Y?</p><p class="faq-a">With $5,000 down, a 60-month loan and 6.5% APR, the illustrative RWD example is about $784 per month before state/local incentives. Your actual payment depends on ZIP code, taxes, fees, lender and credit.</p></div>
-    </div>
-
-    <div class="cta">
-      <div>
-        <h3 style="font-size:18px;font-weight:600">Check Best Tesla Insurance Deals in USA</h3>
-        <p style="color:#4b5563;margin-top:4px">Compare quotes from top US insurers and find a lower premium for your Tesla.</p>
-      </div>
-      <a href="https://araplhn.org/4/0e42e7bf0ab28b4853e791468c36748c" target="_blank" rel="sponsored nofollow noopener">Check Deals</a>
-    </div>
+    
 
     <div class="callout">
       <p><strong>Disclaimer:</strong> Prices, taxes, incentives and financing terms are estimates and can change. This site is not affiliated with Tesla, Inc. Verify final numbers with Tesla, your state DMV and your lender before purchasing.</p>
