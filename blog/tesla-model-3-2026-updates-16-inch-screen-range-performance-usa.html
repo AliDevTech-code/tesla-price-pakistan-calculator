@@ -99,6 +99,37 @@ footer{border-top:1px solid #e5e7eb}
  "inLanguage":"en-US"
 }
 </script>
+
+<style>
+/* Mobile layout fix: prevent the article grid and comparison table from widening the page */
+html,body{width:100%;max-width:100%;overflow-x:hidden}
+*,*::before,*::after{box-sizing:border-box}
+main.article{
+  display:block!important;
+  width:100%!important;
+  max-width:890px!important;
+  min-width:0!important;
+  margin:0 auto!important;
+  padding:34px 20px 60px!important;
+}
+.article,.article>*{min-width:0;max-width:100%}
+.article h1,.article h2,.article h3,.article p,.article li,.article .eyebrow{
+  max-width:100%;overflow-wrap:anywhere;word-break:normal;
+}
+.article .hero-img{display:block;width:100%;max-width:100%;height:auto}
+.article table{
+  display:block;width:100%;max-width:100%;min-width:0;
+  overflow-x:auto;-webkit-overflow-scrolling:touch;
+}
+.article th,.article td{min-width:120px}
+.article .toc,.article .note{width:100%;max-width:100%}
+@media(max-width:600px){
+  main.article{padding:28px 17px 48px!important}
+  .article h1{font-size:clamp(28px,8vw,36px);line-height:1.18}
+  .article .dek{font-size:17px}
+  .article .eyebrow{font-size:11px;letter-spacing:.06em}
+}
+</style>
 </head>
 <body>
 <header>
