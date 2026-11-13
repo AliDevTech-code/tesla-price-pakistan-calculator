@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://tesla-price-calculator-us.vercel.app/</loc><lastmod>2026-11-03</lastmod><priority>1.00</priority></url>
-  <url><loc>https://tesla-price-calculator-us.vercel.app/blog/</loc><lastmod>2026-11-11</lastmod><priority>0.80</priority></url>
+  <url><loc>https://tesla-price-calculator-us.vercel.app/blog/</loc><lastmod>2026-11-13</lastmod><priority>0.80</priority></url>
   <url><loc>https://tesla-price-calculator-us.vercel.app/blog/tesla-model-3-price-in-usa-2026.html</loc><lastmod>2026-11-03</lastmod><priority>0.80</priority></url>
   <url><loc>https://tesla-price-calculator-us.vercel.app/blog/tesla-model-y-price-in-usa-2026.html</loc><lastmod>2026-11-03</lastmod><priority>0.80</priority></url>
   <url><loc>https://tesla-price-calculator-us.vercel.app/blog/tesla-model-s-price-in-usa-2026.html</loc><lastmod>2026-11-03</lastmod><priority>0.80</priority></url>
@@ -16,4 +16,5 @@
   <url><loc>https://tesla-price-calculator-us.vercel.app/blog/tesla-cybertruck-production-wind-down-2027-what-buyers-owners-should-know-usa.html</loc><lastmod>2026-11-07</lastmod><priority>0.80</priority></url>
   <url><loc>https://tesla-price-calculator-us.vercel.app/blog/tesla-model-y-recalls-2026-vin-check-free-repairs-usa.html</loc><lastmod>2026-11-08</lastmod><priority>0.80</priority></url>
   <url><loc>https://tesla-price-calculator-us.vercel.app/blog/tesla-charging-cost-2026-home-vs-supercharger-usa.html</loc><lastmod>2026-11-09</lastmod><priority>0.80</priority></url>
+  <url><loc>https://tesla-price-calculator-us.vercel.app/blog/tesla-fsd-subscription-cost-2026-99-month-worth-it-usa.html</loc><lastmod>2026-11-13</lastmod><priority>0.80</priority></url>
 </urlset>
